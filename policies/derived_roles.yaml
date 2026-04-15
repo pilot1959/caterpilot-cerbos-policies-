@@ -1,0 +1,11 @@
+---
+apiVersion: api.cerbos.dev/v1
+derivedRoles:
+  name: caterpilot_roles
+  definitions:
+    - name: admin
+      parentRoles: ["Admin"]
+    - name: operations
+      parentRoles: ["Operations"]
+    - name: standard
+      parentRoles: ["Standard"]
