@@ -1,0 +1,13 @@
+server:
+  httpListenAddr: ":3592"
+  adminAPI:
+    enabled: false
+
+storage:
+  driver: disk
+  disk:
+    directory: /policies
+    watchForChanges: false
+
+schema:
+  enforcement: none
