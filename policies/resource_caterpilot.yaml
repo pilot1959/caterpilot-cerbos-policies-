@@ -1,0 +1,32 @@
+---
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  version: "default"
+  resource: "caterpilot_page"
+  importDerivedRoles:
+    - caterpilot_roles
+  rules:
+    - actions: ["view", "edit"]
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - admin
+
+    - actions: ["view", "edit"]
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - operations
+      condition:
+        match:
+          expr: >
+            request.resource.attr.page != "Settings" &&
+            request.resource.attr.page != "SystemHealth"
+
+    - actions: ["view"]
+      effect: EFFECT_ALLOW
+      derivedRoles:
+        - standard
+      condition:
+        match:
+          expr: >
+            request.resource.attr.page != "Settings" &&
+            request.resource.attr.page != "SystemHealth"
